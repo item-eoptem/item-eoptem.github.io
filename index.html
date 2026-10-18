@@ -48,6 +48,15 @@ li{background:var(--card);border:2.5px solid var(--line);border-radius:20px;padd
 .name{font-weight:700;font-size:1.12rem}
 .why{grid-column:2;margin:0;font-size:.92rem;color:var(--soft)}
 .go{grid-column:1 / -1;margin-top:10px;display:block;text-align:center;text-decoration:none;font-weight:700;font-size:1rem;background:var(--ink);color:var(--bg);padding:13px 16px;border-radius:14px}
+.find{margin:22px 0 0;display:flex;gap:8px}
+.find label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.find input{flex:1;min-width:0;font:inherit;font-size:1rem;color:var(--ink);background:var(--card);border:2.5px solid var(--line);border-radius:14px;padding:11px 14px}
+.find input::placeholder{color:var(--soft)}
+.find button{font:inherit;font-weight:700;font-size:1rem;color:#102A54;background:var(--sun);border:2.5px solid #102A54;border-radius:14px;padding:0 18px;cursor:pointer}
+.find input:focus-visible,.find button:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+.find-msg{margin:8px 2px 0;font-size:.9rem;color:var(--soft);min-height:1.4em}
+.no{font-size:.82rem;font-weight:700;color:var(--soft);font-variant-numeric:tabular-nums}
+li.hit{border-color:var(--pink);box-shadow:0 0 0 4px var(--pink)}
 .score{margin:14px 0 0;text-align:center;font-weight:700;font-size:1rem;min-height:1.5em}
 footer{margin-top:36px;font-size:.8rem;color:var(--soft);text-align:center;line-height:1.6}
 </style>
@@ -61,6 +70,12 @@ footer{margin-top:36px;font-size:.8rem;color:var(--soft);text-align:center;line-
     <h1>잇템없템</h1>
     <p class="tagline">나만 없는 요즘 잇템, 여기서 체크</p>
   </header>
+  <form class="find" id="find" role="search">
+    <label for="q">상품 번호로 찾기</label>
+    <input id="q" inputmode="numeric" autocomplete="off" placeholder="영상 속 상품 번호 (예: 3)">
+    <button type="submit">찾기</button>
+  </form>
+  <p class="find-msg" id="find-msg" aria-live="polite"></p>
   <nav id="nav" aria-label="시리즈 목록"></nav>
   <main id="list"></main>
   <footer>
@@ -80,16 +95,18 @@ footer{margin-top:36px;font-size:.8rem;color:var(--soft);text-align:center;line-
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
   var tick = '<svg viewBox="0 0 30 30" aria-hidden="true"><path d="M5 15 L12 22 L26 7" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
+  function pad(n) { return String(n).padStart(3, '0'); }
   if (series.length < 2) nav.hidden = true;
 
   series.forEach(function (s, si) {
-    var a = el('a', si === 0 ? 'new' : '', s.title);
+    var label = s.no + '편 ' + s.title;
+    var a = el('a', si === 0 ? 'new' : '', label);
     a.href = '#' + s.id;
     nav.appendChild(a);
 
     var sec = el('section', 'ep'); sec.id = s.id;
     var head = el('div', 'ep-head');
-    head.appendChild(el('h2', '', s.title));
+    head.appendChild(el('h2', '', label));
     head.appendChild(el('span', 'count', s.items.length + '개'));
     sec.appendChild(head);
     sec.appendChild(el('p', 'hint', '이미 있는 템은 체크해보세요.'));
@@ -104,7 +121,7 @@ footer{margin-top:36px;font-size:.8rem;color:var(--soft);text-align:center;line-
 
     s.items.forEach(function (it, ii) {
       var key = s.id + ':' + ii;
-      var li = el('li');
+      var li = el('li'); li.id = 'no' + it.no;
       var b = el('button', 'chk'); b.type = 'button'; b.innerHTML = tick;
       b.setAttribute('aria-label', it.name + ' 있음으로 체크');
       b.setAttribute('aria-pressed', saved[key] ? 'true' : 'false');
@@ -115,6 +132,7 @@ footer{margin-top:36px;font-size:.8rem;color:var(--soft);text-align:center;line-
       });
       btns.push(b);
       var meta = el('div', 'meta');
+      meta.appendChild(el('span', 'no', 'No.' + pad(it.no)));
       if (it.zone) meta.appendChild(el('span', 'zone', it.zone));
       meta.appendChild(el('span', 'name', it.name));
       var go = el('a', 'go', '쿠팡에서 보기');
@@ -128,6 +146,26 @@ footer{margin-top:36px;font-size:.8rem;color:var(--soft);text-align:center;line-
     list.appendChild(sec);
     update();
   });
+
+  var msg = document.getElementById('find-msg');
+  var last = null;
+  function jump(n, smooth) {
+    var t = document.getElementById('no' + n);
+    if (last) last.classList.remove('hit');
+    if (!t) { msg.textContent = 'No.' + pad(n) + ' 상품은 아직 없어요. 번호를 다시 확인해주세요.'; return false; }
+    msg.textContent = '';
+    t.classList.add('hit'); last = t;
+    t.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'center' });
+    return true;
+  }
+  document.getElementById('find').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = parseInt(String(document.getElementById('q').value).replace(/[^0-9]/g, ''), 10);
+    if (!v) { msg.textContent = '숫자로 입력해주세요. 예: 3'; return; }
+    if (jump(v, true)) history.replaceState(null, '', '#no' + v);
+  });
+  var m = location.hash.match(/^#no(\d+)$/);
+  if (m) jump(parseInt(m[1], 10), false);
 })();
 </script>
 </body>
