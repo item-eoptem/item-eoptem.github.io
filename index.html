@@ -85,7 +85,11 @@ footer{margin-top:36px;font-size:.8rem;color:var(--soft);text-align:center;line-
 <script src="items.js"></script>
 <script>
 (function () {
-  var series = window.SERIES || [];
+  var today = (function () {
+    try { return new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Seoul' }); }
+    catch (e) { return new Date().toISOString().slice(0, 10); }
+  })();
+  var series = (window.SERIES || []).filter(function (s) { return !s.date || s.date <= today; });
   var nav = document.getElementById('nav');
   var list = document.getElementById('list');
   var KEY = 'itemeoptem-checks';
