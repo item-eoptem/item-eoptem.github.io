@@ -5,37 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>잇템없템 | 요즘 유행템 체크</title>
 <meta name="description" content="나만 없는 요즘 잇템, 시리즈별로 모아봤어요.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' rx='28' fill='%23FFE24A'/%3E%3Crect x='10' y='13' width='30' height='30' rx='7' fill='%23fff' stroke='%23102A54' stroke-width='4'/%3E%3Cpath d='M17 28 L25 36 L46 11' fill='none' stroke='%23FF7FA8' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' rx='28' fill='%23EBDCC8'/%3E%3Crect x='10' y='13' width='30' height='30' rx='7' fill='%23fff' stroke='%236B5444' stroke-width='4'/%3E%3Cpath d='M17 28 L25 36 L46 11' fill='none' stroke='%23D99A94' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#CFE4FF; --ink:#102A54; --soft:#4A6187; --card:#FFFFFF; --sun:#FFE24A; --pink:#FF7FA8; --line:#102A54;
+  --bg:#F8F2E9; --ink:#4A3B32; --soft:#8A796B; --card:#FFFCF7; --sun:#EBDCC8; --sun-ink:#5A4636; --pink:#D99A94; --line:#D8C7B4; --btn:#6B5444; --btn-ink:#FFFCF7;
   color-scheme:light; box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme: dark){
-  :root{ --bg:#0D1B36; --ink:#EAF2FF; --soft:#9DB2D6; --card:#16294D; --pink:#FF8FB4; --line:#3A5585; color-scheme:dark; }
+  :root{ --bg:#221D19; --ink:#F2E9DE; --soft:#B8A796; --card:#2E2722; --sun:#5A4A3D; --sun-ink:#F2E9DE; --pink:#E3A9A2; --line:#4E4238; --btn:#E6D5C1; --btn-ink:#2E2722; color-scheme:dark; }
 }
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.5}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Gowun Dodum",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.5}
 .wrap{max-width:480px;margin:0 auto;padding:32px 20px 48px}
 header{text-align:center}
 .avatar{width:84px;height:84px;border-radius:50%;background:var(--sun);display:grid;place-items:center;margin:0 auto 14px;border:3px solid var(--line)}
 .avatar svg{width:52px;height:52px}
-h1{font-family:"Black Han Sans","Noto Sans KR",sans-serif;font-weight:400;font-size:2.2rem;letter-spacing:-.5px;margin:0;line-height:1.1}
+h1{font-family:"Jua","Gowun Dodum",sans-serif;font-weight:400;font-size:2.2rem;letter-spacing:-.5px;margin:0;line-height:1.1}
 .tagline{margin:8px 0 0;color:var(--soft);font-size:.98rem}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin:24px -20px 0;padding:10px 20px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin:12px -20px 8px;padding:10px 20px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
 nav::-webkit-scrollbar{display:none}
 nav[hidden]{display:none}
-nav a{flex:none;text-decoration:none;color:var(--ink);font-weight:700;font-size:.9rem;border:2px solid var(--line);border-radius:999px;padding:6px 14px;background:var(--card)}
-nav a.new{background:var(--sun);color:#102A54;border-color:#102A54}
-.ep{margin-top:24px}
-.ep-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6px}
-h2{font-family:"Black Han Sans","Noto Sans KR",sans-serif;font-weight:400;font-size:1.6rem;margin:0}
-.count{font-size:.9rem;font-weight:700;color:var(--soft);white-space:nowrap}
+nav a{flex:none;text-decoration:none;color:var(--ink);border:2px solid var(--line);border-radius:14px;padding:6px 12px;background:var(--card);display:flex;flex-direction:column;line-height:1.3}
+nav a b{font-size:.88rem;font-weight:700;white-space:nowrap}
+nav a small{font-size:.74rem;font-weight:700;color:var(--soft);font-variant-numeric:tabular-nums}
+nav a.new{background:var(--sun);color:var(--sun-ink);border-color:var(--sun)}
+nav a.new small{color:var(--sun-ink)}
+.ep{border-bottom:2px solid color-mix(in srgb, var(--line) 22%, transparent)}
+.ep h2{margin:0;font-size:inherit;font-weight:inherit}
+.ep-toggle{width:100%;display:flex;align-items:center;gap:10px;background:none;border:0;padding:16px 2px;color:var(--ink);font:inherit;cursor:pointer;text-align:left}
+.ep-toggle:focus-visible{outline:3px solid var(--pink);outline-offset:2px;border-radius:10px}
+.ep-title{flex:1;font-family:"Jua","Gowun Dodum",sans-serif;font-weight:400;font-size:1.45rem;line-height:1.2}
+.ep-range{font-size:.85rem;font-weight:700;color:var(--soft);font-variant-numeric:tabular-nums;white-space:nowrap}
+.chev{width:22px;height:22px;flex:none;color:var(--soft)}
+.ep-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.ep-body{padding-bottom:20px}
+.ep-body[hidden]{display:none}
 .hint{margin:0 0 14px;font-size:.92rem;color:var(--soft)}
 ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 li{background:var(--card);border:2.5px solid var(--line);border-radius:20px;padding:16px 16px 16px 14px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:center}
@@ -44,20 +53,22 @@ li{background:var(--card);border:2.5px solid var(--line);border-radius:20px;padd
 .chk[aria-pressed="true"] svg{opacity:1}
 .chk:focus-visible,.go:focus-visible,nav a:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
 .meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.zone{font-size:.78rem;font-weight:700;background:var(--sun);color:#102A54;padding:2px 10px;border-radius:999px}
+.zone{font-size:.78rem;font-weight:700;background:var(--sun);color:var(--sun-ink);padding:2px 10px;border-radius:999px}
 .name{font-weight:700;font-size:1.12rem}
 .why{grid-column:2;margin:0;font-size:.92rem;color:var(--soft)}
-.go{grid-column:1 / -1;margin-top:10px;display:block;text-align:center;text-decoration:none;font-weight:700;font-size:1rem;background:var(--ink);color:var(--bg);padding:13px 16px;border-radius:14px}
+.go{grid-column:1 / -1;margin-top:10px;display:block;text-align:center;text-decoration:none;font-weight:700;font-size:1rem;background:var(--btn);color:var(--btn-ink);padding:13px 16px;border-radius:14px}
 .find{margin:22px 0 0;display:flex;gap:8px}
 .find label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .find input{flex:1;min-width:0;font:inherit;font-size:1rem;color:var(--ink);background:var(--card);border:2.5px solid var(--line);border-radius:14px;padding:11px 14px}
 .find input::placeholder{color:var(--soft)}
-.find button{font:inherit;font-weight:700;font-size:1rem;color:#102A54;background:var(--sun);border:2.5px solid #102A54;border-radius:14px;padding:0 18px;cursor:pointer}
+.find button{font:inherit;font-weight:700;font-size:1rem;color:var(--sun-ink);background:var(--sun);border:2.5px solid var(--sun);border-radius:14px;padding:0 18px;cursor:pointer}
 .find input:focus-visible,.find button:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
 .find-msg{margin:8px 2px 0;font-size:.9rem;color:var(--soft);min-height:1.4em}
 .no{font-size:.82rem;font-weight:700;color:var(--soft);font-variant-numeric:tabular-nums}
 li.hit{border-color:var(--pink);box-shadow:0 0 0 4px var(--pink)}
 .score{margin:14px 0 0;text-align:center;font-weight:700;font-size:1rem;min-height:1.5em}
+.name,.go,nav a b,.find button,.zone,.no,.score{font-family:"Jua","Gowun Dodum",sans-serif;font-weight:400}
+h1{font-size:2.5rem}
 footer{margin-top:36px;font-size:.8rem;color:var(--soft);text-align:center;line-height:1.6}
 </style>
 </head>
@@ -65,7 +76,7 @@ footer{margin-top:36px;font-size:.8rem;color:var(--soft);text-align:center;line-
 <div class="wrap">
   <header>
     <div class="avatar" aria-hidden="true">
-      <svg viewBox="0 0 56 56"><rect x="6" y="10" width="38" height="38" rx="9" fill="#fff" stroke="#102A54" stroke-width="5"/><path d="M15 29 L25 39 L50 9" fill="none" stroke="#FF7FA8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 56 56"><rect x="6" y="10" width="38" height="38" rx="9" fill="#FFFCF7" stroke="#6B5444" stroke-width="5"/><path d="M15 29 L25 39 L50 9" fill="none" stroke="#D99A94" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
     <h1>잇템없템</h1>
     <p class="tagline">나만 없는 요즘 잇템, 여기서 체크</p>
@@ -101,31 +112,54 @@ footer{margin-top:36px;font-size:.8rem;color:var(--soft);text-align:center;line-
 
   function pad(n) { return String(n).padStart(3, '0'); }
   if (series.length < 2) nav.hidden = true;
+  var chev = '<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var sections = {};
+  function setOpen(id, on) {
+    var x = sections[id]; if (!x) return;
+    x.btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+    x.body.hidden = !on;
+  }
 
   series.forEach(function (s, si) {
     var label = s.no + '편 ' + s.title;
-    var a = el('a', si === 0 ? 'new' : '', label);
+    var nums = s.items.map(function (it) { return it.no; });
+    var range = 'No.' + pad(Math.min.apply(null, nums)) + '~' + pad(Math.max.apply(null, nums)).slice(-3);
+
+    var a = el('a', si === 0 ? 'new' : '');
     a.href = '#' + s.id;
+    a.appendChild(el('b', '', label));
+    a.appendChild(el('small', '', range));
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      setOpen(s.id, true);
+      sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(null, '', '#' + s.id);
+    });
     nav.appendChild(a);
 
     var sec = el('section', 'ep'); sec.id = s.id;
-    var head = el('div', 'ep-head');
-    head.appendChild(el('h2', '', label));
-    head.appendChild(el('span', 'count', s.items.length + '개'));
-    sec.appendChild(head);
-    sec.appendChild(el('p', 'hint', '이미 있는 템은 체크해보세요.'));
+    var h2 = el('h2');
+    var btn = el('button', 'ep-toggle'); btn.type = 'button';
+    btn.appendChild(el('span', 'ep-title', label));
+    btn.appendChild(el('span', 'ep-range', range));
+    btn.insertAdjacentHTML('beforeend', chev);
+    h2.appendChild(btn); sec.appendChild(h2);
+    var body = el('div', 'ep-body'); body.id = s.id + '-body';
+    btn.setAttribute('aria-controls', body.id);
+    btn.addEventListener('click', function () { setOpen(s.id, btn.getAttribute('aria-expanded') !== 'true'); });
+    sections[s.id] = { btn: btn, body: body };
+
+    body.appendChild(el('p', 'hint', '이미 있는 템은 체크해보세요.'));
     var ul = el('ul');
     var score = el('p', 'score'); score.setAttribute('aria-live', 'polite');
     var btns = [];
-
     function update() {
       var n = btns.filter(function (b) { return b.getAttribute('aria-pressed') === 'true'; }).length;
       score.textContent = n === 0 ? '' : (n === btns.length ? btns.length + '개 다 있음! 고수시네요' : btns.length + '개 중 ' + n + '개 있음');
     }
-
     s.items.forEach(function (it, ii) {
       var key = s.id + ':' + ii;
-      var li = el('li'); li.id = 'no' + it.no;
+      var li = el('li'); li.id = 'no' + it.no; li.dataset.series = s.id;
       var b = el('button', 'chk'); b.type = 'button'; b.innerHTML = tick;
       b.setAttribute('aria-label', it.name + ' 있음으로 체크');
       b.setAttribute('aria-pressed', saved[key] ? 'true' : 'false');
@@ -146,8 +180,10 @@ footer{margin-top:36px;font-size:.8rem;color:var(--soft);text-align:center;line-
       li.appendChild(go);
       ul.appendChild(li);
     });
-    sec.appendChild(ul); sec.appendChild(score);
+    body.appendChild(ul); body.appendChild(score);
+    sec.appendChild(body);
     list.appendChild(sec);
+    setOpen(s.id, si === 0);
     update();
   });
 
@@ -158,6 +194,7 @@ footer{margin-top:36px;font-size:.8rem;color:var(--soft);text-align:center;line-
     if (last) last.classList.remove('hit');
     if (!t) { msg.textContent = 'No.' + pad(n) + ' 상품은 아직 없어요. 번호를 다시 확인해주세요.'; return false; }
     msg.textContent = '';
+    setOpen(t.dataset.series, true);
     t.classList.add('hit'); last = t;
     t.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'center' });
     return true;
@@ -170,6 +207,11 @@ footer{margin-top:36px;font-size:.8rem;color:var(--soft);text-align:center;line-
   });
   var m = location.hash.match(/^#no(\d+)$/);
   if (m) jump(parseInt(m[1], 10), false);
+  else if (location.hash.length > 1 && sections[location.hash.slice(1)]) {
+    var hid = location.hash.slice(1);
+    setOpen(hid, true);
+    document.getElementById(hid).scrollIntoView({ block: 'start' });
+  }
 })();
 </script>
 </body>
